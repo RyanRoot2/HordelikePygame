@@ -3,6 +3,7 @@ import pygame
 # Define screen dimensions
 SCREEN_WIDTH    = 1920
 SCREEN_HEIGHT   = 1080
+SCREEN_CENTER = (SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
 
 # Define layer constants

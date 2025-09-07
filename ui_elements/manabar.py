@@ -1,7 +1,8 @@
 import pygame
+from constants import TURQUOISE
 
-class HealthBar:
-    def __init__(self, width, height, color=(0, 255, 0), attached_object=None, border=False, pos=None):
+class ManaBar:
+    def __init__(self, width, height, color=TURQUOISE, attached_object=None, border=False, pos=None):
         self.width = width
         self.height = height
         self.color = color
@@ -12,7 +13,7 @@ class HealthBar:
     def determine_position(self):
         if self.attached_object and hasattr(self.attached_object, "sprite"):
             x, y = self.attached_object.sprite.rect.topleft
-            self.pos = (x, y - 20)
+            self.pos = (x, y - 40)
         elif not self.pos:
             raise ValueError("HealthBar requires either an attached_object with a sprite or a fixed pos.")
     
@@ -24,9 +25,7 @@ class HealthBar:
 
         if self.border == True:
             fg_rect = (self.pos[0]+2, self.pos[1]+2, remaining_health_width-4, self.height-4) # type: ignore
-            pygame.draw.rect(surface, (0, 0, 0), bg_rect)
-            pygame.draw.rect(surface, self.color, fg_rect)
         else:
             fg_rect = (self.pos[0], self.pos[1], remaining_health_width, self.height) # type: ignore
-            pygame.draw.rect(surface, (0, 0, 0), bg_rect)
-            pygame.draw.rect(surface, self.color, fg_rect)
+        pygame.draw.rect(surface, (0, 0, 0), bg_rect)
+        pygame.draw.rect(surface, self.color, fg_rect)

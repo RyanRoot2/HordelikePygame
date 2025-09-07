@@ -2,13 +2,14 @@ import pygame
 
 class CharacterLogic:
     def __init__(self, pos):
+        # shared logic attributes
         self.health = 100
         self.max_health = 100
         self.mana = 50
         self._pos = pos
         self.direction = pygame.math.Vector2(0, 0)
-        # other shared logic attributes
 
+    # I don't understand properties
     @property
     def pos(self):
         return self._pos
@@ -17,7 +18,7 @@ class CharacterLogic:
     def pos(self, value):
         self._pos = value
         if hasattr(self, "sprite"):
-            self.sprite.update_position(value)
+            self.sprite.update_position(value) # type: ignore
 
     # Character movement logic
    
@@ -39,6 +40,7 @@ class CharacterLogic:
         self.pos += self.direction * speed
     
     def update(self):
-        self.input()
-        self.move()
+        # self.input()
+        # self.move()
         # other update logic
+        pass

@@ -22,4 +22,6 @@ class Paladin(CharacterLogic):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_1]:
             self.cast_consecration()
+        if keys[pygame.K_2]:
+            print(self.pos)
         # other ability checks

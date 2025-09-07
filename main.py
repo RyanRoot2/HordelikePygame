@@ -1,8 +1,8 @@
 from constants import *
 import pygame
-import sys
 from player.characters.paladin import Paladin
 from ui_elements.healthbar import HealthBar
+from ui_elements.manabar import ManaBar
 from common.input_manager import InputManager
 
 pygame.init()
@@ -21,13 +21,14 @@ all_sprites = pygame.sprite.LayeredUpdates()
 
 input_manager = InputManager()
 
-player = Paladin((200, 200), groups['actors'], all_sprites)
-healthbar = HealthBar(width=200, height=20, color=(0, 255, 0), attached_object=None, border=True, pos=(50, 50))
+player = Paladin(SCREEN_CENTER, groups['actors'], all_sprites)
+healthbar = HealthBar(width=200, height=20, attached_object=player, border=True, pos=(50, 50))
+manabar = ManaBar(width=200, height=20, attached_object=player, border=True, pos=(50, 50))
 
 while True:
 
     # Game
-    screen.fill((100, 100, 100)) 
+    screen.fill(CLARET) 
 
     # Updates
     input_manager.update()
@@ -38,5 +39,6 @@ while True:
     # Draws
     all_sprites.draw(screen)
     healthbar.draw(screen, player.health, player.max_health)  # Example health values
+    manabar.draw(screen, player.health, player.max_health)
     
     pygame.display.flip()  # Update the display
