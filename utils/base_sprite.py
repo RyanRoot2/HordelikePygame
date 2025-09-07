@@ -11,3 +11,6 @@ class BaseSprite(pygame.sprite.Sprite):
 
     def update_position(self, new_pos):
         self.rect.center = new_pos # type: ignore
+
+    def get_rect(self):
+        return self.rect
