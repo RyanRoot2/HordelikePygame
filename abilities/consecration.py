@@ -1,5 +1,5 @@
 from utils.base_sprite import BaseSprite
-from settings import *
+from constants import *
 
 class Consecration:
     dynamic_layering = True

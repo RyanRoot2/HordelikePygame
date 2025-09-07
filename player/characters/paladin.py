@@ -2,7 +2,7 @@ from utils.base_sprite import BaseSprite
 from player.character_logic import CharacterLogic
 from abilities.consecration import Consecration
 import pygame
-from settings import *
+from constants import *
 
 class Paladin(CharacterLogic):
     dynamic_layering = True

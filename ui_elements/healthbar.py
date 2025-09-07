@@ -20,13 +20,13 @@ class HealthBar:
         health_ratio = health / max_health
         remaining_health_width = (self.width * health_ratio)
         self.determine_position()
-        bg_rect = (self.pos[0], self.pos[1], self.width, self.height)
+        bg_rect = (self.pos[0], self.pos[1], self.width, self.height) # type: ignore
 
         if self.border == True:
-            fg_rect = (self.pos[0]+2, self.pos[1]+2, remaining_health_width-4, self.height-4)
+            fg_rect = (self.pos[0]+2, self.pos[1]+2, remaining_health_width-4, self.height-4) # type: ignore
             pygame.draw.rect(surface, (0, 0, 0), bg_rect)
             pygame.draw.rect(surface, self.color, fg_rect)
         else:
-            fg_rect = (self.pos[0], self.pos[1], remaining_health_width, self.height)
+            fg_rect = (self.pos[0], self.pos[1], remaining_health_width, self.height) # type: ignore
             pygame.draw.rect(surface, (0, 0, 0), bg_rect)
             pygame.draw.rect(surface, self.color, fg_rect)

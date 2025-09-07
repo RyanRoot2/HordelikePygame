@@ -1,8 +1,9 @@
-from settings import *
+from constants import *
 import pygame
 import sys
 from player.characters.paladin import Paladin
 from ui_elements.healthbar import HealthBar
+from common.input_manager import InputManager
 
 pygame.init()
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -18,25 +19,24 @@ groups = {
 }
 all_sprites = pygame.sprite.LayeredUpdates()
 
-
+input_manager = InputManager()
 
 player = Paladin((200, 200), groups['actors'], all_sprites)
 healthbar = HealthBar(width=200, height=20, color=(0, 255, 0), attached_object=None, border=True, pos=(50, 50))
 
 while True:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            sys.exit()
-        if event.type == pygame.K_ESCAPE:
-            pygame.quit()
-            sys.exit()
 
-    screen.fill((100, 100, 100))  # Fill the screen with black
+    # Game
+    screen.fill((100, 100, 100)) 
+
+    # Updates
+    input_manager.update()
     player.update()
+
     player.use_abilities()
+    
+    # Draws
     all_sprites.draw(screen)
     healthbar.draw(screen, player.health, player.max_health)  # Example health values
     
-    # Fill the screen with black
     pygame.display.flip()  # Update the display
