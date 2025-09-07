@@ -28,6 +28,9 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
+        if event.type == pygame.K_ESCAPE:
+            pygame.quit()
+            sys.exit()
 
     screen.fill((100, 100, 100))  # Fill the screen with black
     player.update()
